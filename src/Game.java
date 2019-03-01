@@ -19,9 +19,12 @@ public class Game {
     }
 
     public void step(Cell currentCell, Cell toCell) {
-        if (currentCell.piece != null && currentCell.piece.move(currentCell, toCell)){
+        if (currentCell.piece != null && currentCell.piece.move(currentCell, toCell, ChessBoard.getCells())){
             toCell.piece = currentCell.piece;
             currentCell.piece = null;
+            for (Point p : toCell.piece.getMoves(toCell, ChessBoard.getCells())){
+                System.out.println(p.x + " cord " + p.y);
+            }
         }
     }
 
@@ -43,9 +46,7 @@ public class Game {
                 } else {
                     count = 0;
                     Point coord2 = new Point(x, y);
-
                     if (!coord2.equals(coord)) {
-                        System.out.println(coord.x + ", " + coord.y + "------>" + coord2.x + ", " + coord2.y);
                         step(chessBoard.getCell(coord), chessBoard.getCell(coord2));
                         panel.repaint();
                     }

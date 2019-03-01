@@ -1,3 +1,4 @@
+import Piece.Bishop;
 import Piece.Cell;
 import Piece.Pawn;
 import java.awt.*;
@@ -27,14 +28,14 @@ public class ChessBoard {
                 cells[i][j] = new Cell(i, j);
             }
         }
-        cells[0][1].piece = new Pawn(true);
+
         cells[1][1].piece = new Pawn(true);
-        cells[2][1].piece = new Pawn(true);
         cells[3][1].piece = new Pawn(true);
         cells[4][1].piece = new Pawn(true);
         cells[5][1].piece = new Pawn(true);
         cells[6][1].piece = new Pawn(true);
         cells[7][1].piece = new Pawn(true);
+        cells[0][5].piece = new Pawn(true);
 
         cells[0][6].piece = new Pawn(false);
         cells[1][6].piece = new Pawn(false);
@@ -44,7 +45,8 @@ public class ChessBoard {
         cells[5][6].piece = new Pawn(false);
         cells[6][6].piece = new Pawn(false);
         cells[7][6].piece = new Pawn(false);
-
+        cells[1][0].piece = new Bishop(true);
+        cells[5][5].piece = new Bishop(false);
     }
 
 }
