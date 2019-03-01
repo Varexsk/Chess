@@ -29,11 +29,9 @@ public class Bishop extends ChessPiece {
                 return false;
             if (Math.abs(currentCell.x - toCell.x) == Math.abs(currentCell.y - toCell.y)){
                 if (Math.abs(currentCell.x - toCell.x) == 1){
-                    if (toCell.piece != null && toCell.piece.getColor()){
+                    if (toCell.piece != null && toCell.piece.getColor())
                         return false;
-                    } else {
-                        return true;
-                    }
+                    return true;
                 } else {
                     for (int i = 1; i <= Math.abs(currentCell.x - toCell.x) - 1; i++) {
                         if (currentCell.x > toCell.x && currentCell.y > toCell.y) {
@@ -69,11 +67,9 @@ public class Bishop extends ChessPiece {
                 return false;
             if (Math.abs(currentCell.x - toCell.x) == Math.abs(currentCell.y - toCell.y)){
                 if (Math.abs(currentCell.x - toCell.x) == 1){
-                    if (toCell.piece != null && !toCell.piece.getColor()){
+                    if (toCell.piece != null && !toCell.piece.getColor())
                         return false;
-                    } else {
-                        return true;
-                    }
+                    return true;
                 } else {
                     for (int i = 1; i <= Math.abs(currentCell.x - toCell.x) - 1; i++) {
                         if (currentCell.x > toCell.x && currentCell.y > toCell.y) {

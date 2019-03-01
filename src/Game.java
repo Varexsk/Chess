@@ -3,6 +3,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 public class Game {
     private JFrame frame;
@@ -10,6 +11,12 @@ public class Game {
     private Paint panel;
     private int count;
     private Point coord;
+
+    public static ArrayList<Point> getListMoves() {
+        return listMoves;
+    }
+
+    private static ArrayList<Point> listMoves;
 
     public Game(){
         chessBoard = new ChessBoard();
@@ -22,9 +29,6 @@ public class Game {
         if (currentCell.piece != null && currentCell.piece.move(currentCell, toCell, ChessBoard.getCells())){
             toCell.piece = currentCell.piece;
             currentCell.piece = null;
-            for (Point p : toCell.piece.getMoves(toCell, ChessBoard.getCells())){
-                System.out.println(p.x + " cord " + p.y);
-            }
         }
     }
 
@@ -41,15 +45,18 @@ public class Game {
                 if (count == 0) {
                     coord = new Point(x, y);
                     if(chessBoard.getCell(coord).piece != null){
+                        listMoves = chessBoard.getCell(coord).piece.getMoves(chessBoard.getCell(coord), ChessBoard.getCells());
                         count++;
+                        panel.repaint();
                     }
                 } else {
-                    count = 0;
                     Point coord2 = new Point(x, y);
                     if (!coord2.equals(coord)) {
                         step(chessBoard.getCell(coord), chessBoard.getCell(coord2));
                         panel.repaint();
                     }
+                    listMoves = null;
+                    count = 0;
                 }
             }
 

@@ -1,6 +1,5 @@
-import Piece.Bishop;
-import Piece.Cell;
-import Piece.Pawn;
+import Piece.*;
+
 import java.awt.*;
 
 public class ChessBoard {
@@ -36,6 +35,7 @@ public class ChessBoard {
         cells[6][1].piece = new Pawn(true);
         cells[7][1].piece = new Pawn(true);
         cells[0][5].piece = new Pawn(true);
+        cells[4][2].piece = new Pawn(false);
 
         cells[0][6].piece = new Pawn(false);
         cells[1][6].piece = new Pawn(false);
@@ -47,6 +47,9 @@ public class ChessBoard {
         cells[7][6].piece = new Pawn(false);
         cells[1][0].piece = new Bishop(true);
         cells[5][5].piece = new Bishop(false);
+        cells[4][4].piece = new Knight(true);
+        cells[3][3].piece = new Knight(false);
+        cells[6][3].piece = new Queen(true);
     }
 
 }

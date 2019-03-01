@@ -1,4 +1,5 @@
 
+import Piece.Cell;
 import Piece.Pieces;
 
 import javax.swing.*;
@@ -11,6 +12,7 @@ public class Paint extends JComponent {
         setChessBoard(g);
         setImages();
         drawPieces(g);
+        drawMoves(g);
     }
 
     public void setChessBoard(Graphics g){
@@ -33,6 +35,13 @@ public class Paint extends JComponent {
                         g.setColor(lightBrown);
                         fillRect(g, i, j);
                     }
+    }
+
+    public void drawMoves(Graphics g){
+        g.setColor(new Color(109,159,88));
+        if (Game.getListMoves() != null)
+            for (Point p : Game.getListMoves())
+                g.fillOval(p.x * ChessBoard.CELL + (ChessBoard.CELL - ChessBoard.CELL /4)/2 , p.y * ChessBoard.CELL + (ChessBoard.CELL -ChessBoard.CELL /4)/2 , ChessBoard.CELL /4, ChessBoard.CELL/4);
     }
 
     public void drawPieces(Graphics g){

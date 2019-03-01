@@ -28,6 +28,8 @@ public class Pawn extends ChessPiece {
                 return false;
             } else{
                 if (currentCell.y == 1 && currentCell.y + 2 == toCell.y && currentCell.x == toCell.x){
+                    if (cells[currentCell.x][currentCell.y + 1].piece != null)
+                        return false;
                     return true;
                 }
                 if (currentCell.y + 1 == toCell.y){
@@ -49,7 +51,9 @@ public class Pawn extends ChessPiece {
             if (toCell.piece != null && !toCell.piece.getColor()){
                 return false;
             } else{
-                if (currentCell.y == 6 && currentCell.y - 2 == toCell.y){
+                if (currentCell.y == 6 && currentCell.y - 2 == toCell.y && currentCell.x == toCell.x){
+                    if (cells[currentCell.x][currentCell.y - 1].piece != null)
+                        return false;
                     return true;
                 }
                 if (currentCell.y - 1 == toCell.y){
@@ -61,7 +65,7 @@ public class Pawn extends ChessPiece {
                     }
                     if (currentCell.x != toCell.x)
                         return false;
-                    if (toCell.piece != null){
+                    if (toCell.piece != null) {
                         return false;
                     }
                     return true;
