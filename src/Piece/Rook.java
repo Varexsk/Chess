@@ -3,10 +3,10 @@ package Piece;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class Queen extends ChessPiece{
+public class Rook extends ChessPiece{
     public boolean white;
 
-    public Queen(boolean white){
+    public Rook(boolean white){
         this.white = white;
     }
 
@@ -27,39 +27,6 @@ public class Queen extends ChessPiece{
         if (white){
             if (toCell.piece != null && toCell.piece.getColor())
                 return false;
-            //move diagonal
-            if (Math.abs(currentCell.x - toCell.x) == Math.abs(currentCell.y - toCell.y)){
-                if (Math.abs(currentCell.x - toCell.x) == 1){
-                    if (toCell.piece != null && toCell.piece.getColor())
-                        return false;
-                    return true;
-                } else {
-                    for (int i = 1; i <= Math.abs(currentCell.x - toCell.x) - 1; i++) {
-                        if (currentCell.x > toCell.x && currentCell.y > toCell.y) {
-                            if (cells[currentCell.x - i][currentCell.y - i].piece != null) {
-                                return false;
-                            }
-                        }
-                        if (currentCell.x > toCell.x && currentCell.y < toCell.y) {
-                            if (cells[currentCell.x - i][currentCell.y + i].piece != null) {
-                                return false;
-                            }
-                        }
-                        if (currentCell.x < toCell.x && currentCell.y < toCell.y) {
-                            if (cells[currentCell.x + i][currentCell.y + i].piece != null) {
-                                return false;
-                            }
-                        }
-                        if (currentCell.x < toCell.x && currentCell.y > toCell.y) {
-                            if (cells[currentCell.x + i][currentCell.y - i].piece != null) {
-                                return false;
-                            }
-                        }
-                        result = true;
-                    }
-                }
-            }
-            //move straight
             if (currentCell.x == toCell.x){
                 if (Math.abs(currentCell.y - toCell.y) == 1) {
                     if (toCell.piece != null && toCell.piece.getColor())
@@ -99,39 +66,6 @@ public class Queen extends ChessPiece{
         } else {
             if (toCell.piece != null && !toCell.piece.getColor())
                 return false;
-            //move diagonal
-            if (Math.abs(currentCell.x - toCell.x) == Math.abs(currentCell.y - toCell.y)){
-                if (Math.abs(currentCell.x - toCell.x) == 1){
-                    if (toCell.piece != null && !toCell.piece.getColor())
-                        return false;
-                    return true;
-                } else {
-                    for (int i = 1; i <= Math.abs(currentCell.x - toCell.x) - 1; i++) {
-                        if (currentCell.x > toCell.x && currentCell.y > toCell.y) {
-                            if (cells[currentCell.x - i][currentCell.y - i].piece != null) {
-                                return false;
-                            }
-                        }
-                        if (currentCell.x > toCell.x && currentCell.y < toCell.y) {
-                            if (cells[currentCell.x - i][currentCell.y + i].piece != null) {
-                                return false;
-                            }
-                        }
-                        if (currentCell.x < toCell.x && currentCell.y < toCell.y) {
-                            if (cells[currentCell.x + i][currentCell.y + i].piece != null) {
-                                return false;
-                            }
-                        }
-                        if (currentCell.x < toCell.x && currentCell.y > toCell.y) {
-                            if (cells[currentCell.x + i][currentCell.y - i].piece != null) {
-                                return false;
-                            }
-                        }
-                        result = true;
-                    }
-                }
-            }
-            //move straight
             if (currentCell.x == toCell.x){
                 if (Math.abs(currentCell.y - toCell.y) == 1) {
                     if (toCell.piece != null && !toCell.piece.getColor())
@@ -179,8 +113,8 @@ public class Queen extends ChessPiece{
     @Override
     public void paint(Graphics g, int cellsize, Point coord) {
         if (white)
-            g.drawImage((Image)Pieces.wQ.image, coord.x * cellsize, coord.y * cellsize, null);
+            g.drawImage((Image)Pieces.wR.image, coord.x * cellsize, coord.y * cellsize, null);
         else
-            g.drawImage((Image)Pieces.bQ.image, coord.x * cellsize, coord.y * cellsize, null);
+            g.drawImage((Image)Pieces.bR.image, coord.x * cellsize, coord.y * cellsize, null);
     }
 }
